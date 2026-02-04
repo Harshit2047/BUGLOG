@@ -80,28 +80,31 @@ This Vite project can be deployed to any static site hosting service. Here are t
     npm run build
     ```
 
-2.  **Deploy to a hosting provider (e.g., Netlify, Vercel):**
+**Deploy to a hosting provider (e.g., Azure Blob Storage, Podman/WSL, Azure Container Service):**
 
-    *   **Using the CLI:**
+*   **Using Azure Blob Storage:**
+    1. Build the project to generate the production-ready `dist` folder:
         ```bash
-        # Install Netlify CLI
-        npm install netlify-cli -g
-        
-        # Deploy
-        netlify deploy --prod
+        npm run build
         ```
-        Follow the prompts, setting the "Publish directory" to `dist`.
+    2. Upload the contents of the [dist](http://_vscodecontentref_/0) folder to your Azure Blob Storage static website container.
+    3. Access your deployed site via the Azure Blob Storage public URL.
 
-    *   **Using the Web UI:**
-        1.  Push your code to a GitHub/GitLab/Bitbucket repository.
-        2.  Create a new site on Netlify and link it to your repository.
-        3.  Set the build command to `npm run build`.
-        4.  Set the publish directory to `dist`.
-        5.  Deploy the site.
+*   **Using Podman and WSL (Dockerized Deployment):**
+    1. Build a Docker image using Podman:
+        ```bash
+        podman build -t react-blog-app .
+        ```
+    2. Run the image locally:
+        ```bash
+        podman run -p 80:80 react-blog-app
+        ```
+    3. Share the image (`podman save`) or push it to a container registry for others to use.
+
 
 ## Public URL
 
-The application is deployed and accessible at the following URL:
+The application is deployed and accessible at the following URL: https://buglog2047.z13.web.core.windows.net/
 
 **[Your Deployed URL Here]**
 
